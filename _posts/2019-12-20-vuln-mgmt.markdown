@@ -1,9 +1,0 @@
----
-layout: post
-title:  "VulnMgmt"
-date:   2019-12-20 17:50:00 -0500
-categories: jekyll update
----
-
-This is a placeholder for an eventual post about Vulnerability Management, and some technical details around how to setup an effective program.
-
