@@ -5,4 +5,4 @@
 layout: page
 permalink: /
 ---
-![our motto](/assets/IBP_motto.png)
+![our motto](/assets/index/IBP_motto.png)
