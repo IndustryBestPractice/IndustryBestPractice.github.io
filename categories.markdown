@@ -22,3 +22,6 @@ title: Categories
   </div>
 {% endfor %}
 </div>
+
+You can find the source code for this page at:
+[webjeda](https://blog.webjeda.com/jekyll-categories)

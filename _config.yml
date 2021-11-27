@@ -28,6 +28,12 @@ url: "https://industrybestpractice.github.io" # the base hostname & protocol for
 twitter_username: InBestPractice
 github_username:  industrybestpractice
 
+# Adding pagination manually
+str_next_page: "Next"
+str_previous_page: "Previous"
+pagination_nr: 5
+paginate_path: /page:num/
+
 # Build settings
 theme: minima
 plugins:
