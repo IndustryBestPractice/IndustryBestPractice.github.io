@@ -1,1 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2021-11-26T22:05:24-06:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">IndustryBestPractice Blog</title><subtitle>A blog born from trying to convince a director that rotating passwords every 90 days is not an &quot;industry best practice&quot; today just becausee it was 10 years ago.</subtitle><entry><title type="html">Welcome to IndustryBestPractice!</title><link href="http://0.0.0.0:4000/info/2021/11/26/welcome-to-ibp.html" rel="alternate" type="text/html" title="Welcome to IndustryBestPractice!" /><published>2021-11-26T04:00:00-06:00</published><updated>2021-11-26T04:00:00-06:00</updated><id>http://0.0.0.0:4000/info/2021/11/26/welcome-to-ibp</id><content type="html" xml:base="http://0.0.0.0:4000/info/2021/11/26/welcome-to-ibp.html">&lt;p&gt;This is the first post page for the IndustryBestPractice blog. The blog will likely be changing as I have time to get it setup, but this this my first attempt at blogging using Jekyll and Github Pages. Hopefully I apply a theme soon, though I kind of like the spartan nature of minima.&lt;/p&gt;</content><author><name></name></author><summary type="html">This is the first post page for the IndustryBestPractice blog. The blog will likely be changing as I have time to get it setup, but this this my first attempt at blogging using Jekyll and Github Pages. Hopefully I apply a theme soon, though I kind of like the spartan nature of minima.</summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2021-11-27T21:35:09-06:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">IndustryBestPractice Blog</title><subtitle>A blog born from trying to convince a director that rotating passwords every 90 days is not an &quot;industry best practice&quot; today just because it was 10 years ago.</subtitle><entry><title type="html">K.I.S.S. - Questions to ask when setting up a new project or service</title><link href="http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist.html" rel="alternate" type="text/html" title="K.I.S.S. - Questions to ask when setting up a new project or service" /><published>2021-11-27T04:00:01-06:00</published><updated>2021-11-27T04:00:01-06:00</updated><id>http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist</id><content type="html" xml:base="http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist.html">&lt;div class=&quot;post-categories&quot;&gt;
+  
+  Categories: 
+  &lt;a href=&quot;/categories/#projects&quot;&gt;projects&lt;/a&gt;
+  &amp;nbsp;
+  
+  &lt;a href=&quot;/categories/#checklist&quot;&gt;checklist&lt;/a&gt;
+  
+  
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+Standing up new services or products isn’t always easy, but asking the right questions aught to be. There are much more detailed questions that need to be asked but breaking concepts into critical domians of interest have helped the non-technical teams to ask the easy questions first without involving the information security department in every initial meeting and discussion.&lt;/p&gt;
+
+&lt;h3 id=&quot;data&quot;&gt;DATA&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;What data are you sending?&lt;/li&gt;
+  &lt;li&gt;Do you need to send all that data or are only a few fields or items required?&lt;/li&gt;
+  &lt;li&gt;Is any of it sensitive?&lt;/li&gt;
+  &lt;li&gt;Is any of it compliance enforced (PCI, SOX, HIPAA, etc)?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;transfer&quot;&gt;TRANSFER&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;How are you getting the data from A -&amp;gt; B?
+    &lt;ul&gt;
+      &lt;li&gt;(S)FTP&lt;/li&gt;
+      &lt;li&gt;API&lt;/li&gt;
+      &lt;li&gt;Other&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Are you sending data to them, or are they reaching in and grabbing it from you?&lt;/li&gt;
+  &lt;li&gt;How are you securing this communication?
+    &lt;ul&gt;
+      &lt;li&gt;Certificate?&lt;/li&gt;
+      &lt;li&gt;Point-to-Point VPN?&lt;/li&gt;
+      &lt;li&gt;Other&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;authentication&quot;&gt;AUTHENTICATION&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Is the product/service SSO integrated?&lt;/li&gt;
+  &lt;li&gt;Does it integrate with YOUR SSO solution (Azure AD, ADFS, SAML, OKTA, whatever)&lt;/li&gt;
+  &lt;li&gt;How are you going to handle “break the glass” accounts that cannot be federated?&lt;/li&gt;
+  &lt;li&gt;Is it MFA or 2FA?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;authorization&quot;&gt;AUTHORIZATION&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Does it support Role Based Access Control (aka RBAC)?&lt;/li&gt;
+  &lt;li&gt;How will those roles be provisioned automatically (AD synced groups, etc) or manually assigned by an administrator?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;external-party-access&quot;&gt;EXTERNAL PARTY ACCESS&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Who else, outside of your core employees, needs access to this information (vendors, trusted partners, marketing, etc)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;system-attack-surface&quot;&gt;SYSTEM ATTACK SURFACE&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Is this required to be on the internet (i.e. accessible from the world)&lt;/li&gt;
+  &lt;li&gt;Are there any NAT or Port Forwarding requirements&lt;/li&gt;
+  &lt;li&gt;Is there additional infrastructure that is required for this solution? (i.e. a WAF, DMZ proxy server, etc)&lt;/li&gt;
+  &lt;li&gt;Does this require a subscription to any cloud service (AWS, GCP, Azure)&lt;/li&gt;
+  &lt;li&gt;Will access to this service be from inside your own network or accessed from anywhere in the world?&lt;/li&gt;
+  &lt;li&gt;Does it have IP allow listing?&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>@_mbanana</name></author><summary type="html">Categories: projects &amp;nbsp; checklist Standing up new services or products isn’t always easy, but asking the right questions aught to be. There are much more detailed questions that need to be asked but breaking concepts into critical domians of interest have helped the non-technical teams to ask the easy questions first without involving the information security department in every initial meeting and discussion.</summary></entry><entry><title type="html">Welcome to IndustryBestPractice!</title><link href="http://0.0.0.0:4000/info/2021/11/26/welcome-to-ibp.html" rel="alternate" type="text/html" title="Welcome to IndustryBestPractice!" /><published>2021-11-26T04:00:00-06:00</published><updated>2021-11-26T04:00:00-06:00</updated><id>http://0.0.0.0:4000/info/2021/11/26/welcome-to-ibp</id><content type="html" xml:base="http://0.0.0.0:4000/info/2021/11/26/welcome-to-ibp.html">&lt;p&gt;This is the first post page for the IndustryBestPractice blog. The blog will likely be changing as I have time to get it setup, but this this my first attempt at blogging using Jekyll and Github Pages. Hopefully I apply a theme soon, though I kind of like the spartan nature of minima.&lt;/p&gt;</content><author><name></name></author><summary type="html">This is the first post page for the IndustryBestPractice blog. The blog will likely be changing as I have time to get it setup, but this this my first attempt at blogging using Jekyll and Github Pages. Hopefully I apply a theme soon, though I kind of like the spartan nature of minima.</summary></entry></feed>
