@@ -1,4 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2021-11-27T21:35:09-06:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">IndustryBestPractice Blog</title><subtitle>A blog born from trying to convince a director that rotating passwords every 90 days is not an &quot;industry best practice&quot; today just because it was 10 years ago.</subtitle><entry><title type="html">K.I.S.S. - Questions to ask when setting up a new project or service</title><link href="http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist.html" rel="alternate" type="text/html" title="K.I.S.S. - Questions to ask when setting up a new project or service" /><published>2021-11-27T04:00:01-06:00</published><updated>2021-11-27T04:00:01-06:00</updated><id>http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist</id><content type="html" xml:base="http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist.html">&lt;div class=&quot;post-categories&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2021-12-04T19:21:00-06:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">IndustryBestPractice Blog</title><subtitle>A blog born from trying to convince a director that rotating passwords every 90 days is not an &quot;industry best practice&quot; today just because it was 10 years ago.</subtitle><entry><title type="html">How to build a Github pages blog using Jekyll</title><link href="http://0.0.0.0:4000/jekyll/howto/2021/12/04/how-to-blog.html" rel="alternate" type="text/html" title="How to build a Github pages blog using Jekyll" /><published>2021-12-04T04:00:01-06:00</published><updated>2021-12-04T04:00:01-06:00</updated><id>http://0.0.0.0:4000/jekyll/howto/2021/12/04/how-to-blog</id><content type="html" xml:base="http://0.0.0.0:4000/jekyll/howto/2021/12/04/how-to-blog.html">&lt;div class=&quot;post-categories&quot;&gt;
+  
+  Categories: 
+  &lt;a href=&quot;/categories/#jekyll&quot;&gt;jekyll&lt;/a&gt;
+  &amp;nbsp;
+  
+  &lt;a href=&quot;/categories/#howto&quot;&gt;howto&lt;/a&gt;
+  
+  
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+How does one do a blog using Jekyll? I found myself asking the same question after reading a twitter post from Jack Rhysider extoling the simplicity of the github pages blog, and I aimed to find out! The most simple method I could find involved setting up docker and using that since Jekyll and Ruby are notoriously finnicky. Using a prebuilt, consistent environment sounded perfect for the classic use case of “works on my computer”, except now “your computer” is a consistent Dockerized environment!&lt;/p&gt;
+
+&lt;p&gt;If you’re on windows, I suggest installing &lt;a href=&quot;https://docs.microsoft.com/en-us/windows/wsl/install&quot;&gt;Windows Subsystem for Linux&lt;/a&gt; (WSL) and installing docker within that environment. I had tried installing Docker for windows and it made my processor hit 100% usage all too often. Your mileage may vary.&lt;/p&gt;
+
+&lt;p&gt;Once you get docker installed, either on Windows directly, or on any old linux host, jump into the commmand line to pull down the necessary images:
+&lt;img src=&quot;/assets/posts/how-to-blog/init-connect.png&quot; alt=&quot;initial connection&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You’ll want to update your system, and install docker (I’m using Ubuntu because it’s easiest). If you use some other linux distro, follow your OS’s instructions.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get upgrade &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker.io git &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;At the time of this post, the lastest docker container available for Jekyll was v3.8 - so it’s time to check &lt;a href=&quot;https://pages.github.com/versions/&quot;&gt;dependencies and compatibility charts&lt;/a&gt;! I ended up having to use an &lt;a href=&quot;https://github.com/github/pages-gem/releases?page=2&quot;&gt;archived release&lt;/a&gt; since the latest release of github pages for Jekyll at time of writing used Jekyll v3.9 which you’ll note is newer than the docker container version. Per the &lt;a href=&quot;https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll&quot;&gt;initial setup instructions&lt;/a&gt;, we must enter a Github pages config version for our _config.yml file to know how to interact with Github appropriately. Per the archived page we checked, I used v205 as I am running Jekyll 3.8.
+&lt;img src=&quot;/assets/posts/how-to-blog/jekyll-version.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/assets/posts/how-to-blog/github-pages-version.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker pull jekyll/jekyll:3.8&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;After we pull down our desired version of jekyll, we can start following these &lt;a href=&quot;https://docs.github.com/en/pages/quickstart&quot;&gt;refreshingly well written&lt;/a&gt; instructions.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# In the linux machine create a folder for your github project&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;blog &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog
+git init blogname.github.io
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blogname.github.io
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; ./vendor/bundle &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Start interactive shell with jekyll container and map local directors as volumes&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:/srv/jekyll&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/vendor/bundle:/usr/local/bundle&quot;&lt;/span&gt; jekyll/jekyll:3.8 /bin/bash
+&lt;span class=&quot;c&quot;&gt;# Now inside your jekyll docker container&lt;/span&gt;
+jekyll new &lt;span class=&quot;nt&quot;&gt;--skip-bundle&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# now follow steps from the github doc page starting @ #8, opening the Gemfile that jekyll created and you're good go!&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once you’re done building your page and you write your first post in the _posts directory, save your work and then build and serve your page locally to test, all from inside the docker container!&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Building your Jekyll project with Docker&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:/srv/jekyll&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/vendor/bundle:/usr/local/bundle&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--env&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;YOUR_ENV_VARIABLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;your_env_value jekyll/jekyll:3.8 jekyll build
+&lt;span class=&quot;c&quot;&gt;# Serving your Jekyll project with Docker&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:/srv/jekyll&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/vendor/bundle:/usr/local/bundle&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--env&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;YOUR_ENV_VARIABLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;your_env_value &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 4000:4000 jekyll/jekyll:3.8 jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now just open a web browser one your host computer and navigate to your new site!
+&lt;img src=&quot;/assets/posts/how-to-blog/jekyll-build-serve.png&quot; alt=&quot;jekyll build serve&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you’re satisfied with how your project looks locally, just commit and push. The instructions on the github page mention a method to do a pull request to a new branch and then merge to master; however, I find this method of pushing directly to master easiest. Granted, this is a new blog and maybe there is a very good reason to do it the way they mention, but I have not discovered it yet.&lt;/p&gt;
+
+&lt;p&gt;I have made some customizations to this site, and used the concept of passing environment variables into my jekyll container at build and serve to change certain variables on my pages depending on if I’m building it locally or planning to push it to Github (i.e. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--env JEKYLL_ENV=production&lt;/code&gt;), but mostly I stuck with the base minima theme and like it.&lt;/p&gt;
+
+&lt;p&gt;Additional links and commands I find helpful to reference as I am writing posts below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# https://michaelsoolee.com/compile-jekyll-site-docker/&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker pull jekyll/jekyll:3.8
+
+&lt;span class=&quot;c&quot;&gt;# Building your Jekyll project with Docker&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:/srv/jekyll&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/vendor/bundle:/usr/local/bundle&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--env&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production jekyll/jekyll:3.8 jekyll build
+
+&lt;span class=&quot;c&quot;&gt;# Serving your Jekyll project with Docker&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:/srv/jekyll&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/vendor/bundle:/usr/local/bundle&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--env&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;development &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 4000:4000 jekyll/jekyll:3.8 jekyll serve
+
+&lt;span class=&quot;c&quot;&gt;# Run jekyll container interactivley&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:/srv/jekyll&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/vendor/bundle:/usr/local/bundle&quot;&lt;/span&gt; jekyll/jekyll:3.8 /bin/bash
+
+&lt;span class=&quot;c&quot;&gt;# Jekyll categories setup&lt;/span&gt;
+https://blog.webjeda.com/jekyll-categories/
+
+&lt;span class=&quot;c&quot;&gt;# How to setup github pages official doc&lt;/span&gt;
+https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll
+&lt;span class=&quot;c&quot;&gt;# Jekyll official doc&lt;/span&gt;
+https://jekyllrb.com/docs/step-by-step/08-blogging/
+&lt;span class=&quot;c&quot;&gt;# Jekyll override theme&lt;/span&gt;
+https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+&lt;span class=&quot;c&quot;&gt;# markdown guide&lt;/span&gt;
+https://www.markdownguide.org/tools/jekyll/&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>@_mbanana</name></author><summary type="html">Categories: jekyll &amp;nbsp; howto How does one do a blog using Jekyll? I found myself asking the same question after reading a twitter post from Jack Rhysider extoling the simplicity of the github pages blog, and I aimed to find out! The most simple method I could find involved setting up docker and using that since Jekyll and Ruby are notoriously finnicky. Using a prebuilt, consistent environment sounded perfect for the classic use case of “works on my computer”, except now “your computer” is a consistent Dockerized environment!</summary></entry><entry><title type="html">K.I.S.S. - Questions to ask when setting up a new project or service</title><link href="http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist.html" rel="alternate" type="text/html" title="K.I.S.S. - Questions to ask when setting up a new project or service" /><published>2021-11-27T04:00:01-06:00</published><updated>2021-11-27T04:00:01-06:00</updated><id>http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist</id><content type="html" xml:base="http://0.0.0.0:4000/projects/checklist/2021/11/27/new-project-checklist.html">&lt;div class=&quot;post-categories&quot;&gt;
   
   Categories: 
   &lt;a href=&quot;/categories/#projects&quot;&gt;projects&lt;/a&gt;
